@@ -171,9 +171,9 @@ You can have multiple staging/qa/dev/whatever configurations that will only be u
 		
 		    @Override
 		    public void init(Context context) {
-		        setName(context.getString(R.string.pets_staging_configuration_name));
-		        setServerHost(context.getString(R.string.pets_staging_server_host));
-		        setBaseApiPath(context.getString(R.string.pets_staging_server_base_api_path));
+		        setName(context.getString(R.string.my_staging_configuration_name));
+		        setServerHost(context.getString(R.string.my_staging_server_host));
+		        setBaseApiPath(context.getString(R.string.my_staging_server_base_api_path));
 		    }
 		
 		    @Override
