@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.jfrog.artifactory-upload'
 
 group = "com.bottlerocketstudios"
-version = "1.0.4"
+version = "1.0.5-SNAPSHOT"
 
 project.ext.artifactory_artifactid = "applicationconfiguration"
 project.ext.artifactory_packaging = "jar"
