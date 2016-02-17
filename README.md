@@ -171,9 +171,9 @@ You can have multiple staging/qa/dev/whatever configurations that will only be u
 		
 		    @Override
 		    public void init(Context context) {
-		        setName(context.getString(R.string.pets_staging_configuration_name));
-		        setServerHost(context.getString(R.string.pets_staging_server_host));
-		        setBaseApiPath(context.getString(R.string.pets_staging_server_base_api_path));
+		        setName(context.getString(R.string.my_staging_configuration_name));
+		        setServerHost(context.getString(R.string.my_staging_server_host));
+		        setBaseApiPath(context.getString(R.string.my_staging_server_base_api_path));
 		    }
 		
 		    @Override
@@ -189,11 +189,26 @@ You can have multiple staging/qa/dev/whatever configurations that will only be u
 			MyServerConfigurationController.CONTROLLER_ID, 
 			MyServerConfigurationController.class);
 
-		//Somewhere in the application where you want to get the configuration controller instead, perhaps to register a change listener.
+#### Switching the configuration
+The whole reason to include this library is to switch configurations at runtime. The code below would switch our example to use the staging environment. After this command listeners will be notified of the change sequentially and synchronously with this method call. Because MyServerConfigurationController in our example above returns true from shouldExitOnChange(), System.exit() will be called after the change is stored and listeners are notified.
+
 		MyServerConfigurationController myServerConfigurationController = ApplicationConfigurationServiceLocator.getConfigurationController(
 			MyServerConfigurationController.CONTROLLER_ID, 
 			MyServerConfigurationController.class);
-        
+			
+		//Now that you have the configuration controller, switch environments.
+		myServerConfigurationController.setSelectedConfigId(MyStagingConfiguration.CONFIGURATION_ID);
+		
+#### Observing configuration changes
+You may need to cleanup cached items or other state that exists before the switch occurs. Register your listener to be notified.
+
+		MyServerConfigurationController myServerConfigurationController = ApplicationConfigurationServiceLocator.getConfigurationController(
+			MyServerConfigurationController.CONTROLLER_ID, 
+			MyServerConfigurationController.class);
+			
+		//Add your class that needs to be notified of the evironment switch to e.g. delete auth tokens
+		myServerConfigurationController.addListener(myAuthTokenConfigListener);
+     
 ### Build
 This project must be built with gradle. 
 
