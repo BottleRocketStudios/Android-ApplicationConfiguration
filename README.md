@@ -35,7 +35,7 @@ Add staging and production product flavors or add the attribute to your existing
 
         dependencies {
             ...
-            compile 'com.bottlerocketstudios:applicationconfiguration:1.0.3'
+            compile 'com.bottlerocketstudios:applicationconfiguration:1.0.4'
         }
 
 #### Application Object
