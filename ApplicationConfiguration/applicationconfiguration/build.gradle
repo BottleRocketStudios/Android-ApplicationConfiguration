@@ -4,13 +4,13 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.jfrog.artifactory-upload'
 
 group = "com.bottlerocketstudios"
-version = "1.0.3"
+version = "1.0.4"
 
 project.ext.artifactory_artifactid = "applicationconfiguration"
 project.ext.artifactory_packaging = "jar"
 project.ext.artifactory_description = "Application Configuration provides an easy way to encapsulate multiple runtime configurations on multiple axes."
 project.ext.artifactory_project_url = "https://github.com/BottleRocketStudios/Android-ApplicationConfiguration"
-project.ext.artifactory_name = "ApplicationConfiguration"
+project.ext.artifactory_name = project.ext.artifactory_name = group + "." + project.ext.artifactory_artifactid
 project.ext.artifactory_vcs_url = "https://github.com/BottleRocketStudios/Android-ApplicationConfiguration"
 
 project.ext.bundle_name = "applicationconfiguration"

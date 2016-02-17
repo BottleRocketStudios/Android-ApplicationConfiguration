@@ -108,8 +108,10 @@ public abstract class ApplicationConfigurationController<T extends ApplicationCo
             for (ApplicationConfigurationControllerListener listener: mListeners) {
                 listener.onStagingSwitch(mContext, newApplicationConfig);
             }
-            Log.i(TAG, "Shutting down VM to affect staging switch.");
-            System.exit(0);
+            if (shouldExitOnChange()) {
+                Log.i(TAG, "Shutting down VM to affect staging switch.");
+                System.exit(0);
+            }
         }
     }
     
